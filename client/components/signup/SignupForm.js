@@ -1,5 +1,6 @@
 import React from 'react';
 import map from 'lodash/map';
+// import axios from 'axios';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -21,7 +22,9 @@ class SignupForm extends React.Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state); instead of axios here we will use function which will store props
+    // axios.post('/api/users', {user: this.state});
+    this.props.userSignupRequest(this.state);
   }
 
   render() {
@@ -80,5 +83,10 @@ class SignupForm extends React.Component {
     );
   }
 }
+
+SignupForm.propTypes = {
+  userSignupRequest: React.PropTypes.func.isRequired
+}
+
 
 export default SignupForm;
